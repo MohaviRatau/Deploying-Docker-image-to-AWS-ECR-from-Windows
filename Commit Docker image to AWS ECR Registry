@@ -1,0 +1,15 @@
+1. Tag Your Docker Image from your windows cmd or bash on linux
+//Replace <aws_account_id>, <region>, and <repository_name> with your AWS account ID, the AWS region where your ECR repository is located, and the name of your ECR repository, respectively.
+
+      docker tag your_image_name:tag <aws_account_id>.dkr.ecr.<region>.amazonaws.com/<repository_name>:tag
+
+2. Authenticate Docker to Your ECR Registry
+//Run your authentication command listed on your created repository's 'push commnds':
+     
+      example looks like=: 
+aws ecr get-login-password --region <region> | docker login --username AWS --password-stdin     <aws_account_id>.dkr.ecr.<region>.amazonaws.com
+
+3. Push Your Docker Image
+//Push your Docker image to the ECR repository:
+
+      docker push <aws_account_id>.dkr.ecr.<region>.amazonaws.com/<repository_name>:tag
